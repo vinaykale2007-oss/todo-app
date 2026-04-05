@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creative To-Do App</title>
+    <meta name="description" content="A premium, dynamic, and beautiful to-do list application.">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Animated background elements -->
+    <div class="background">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+    </div>
+    
+    <main class="app-container">
+        <header>
+            <h1>My Tasks</h1>
+            <p id="taskCount">0 tasks pending</p>
+        </header>
+
+        <div class="input-group">
+            <input type="text" id="taskInput" placeholder="What needs to be done?" autocomplete="off">
+            <button id="addBtn" onclick="addTask()" aria-label="Add Task">
+                <i class="ph ph-plus-bold"></i>
+            </button>
+        </div>
+
+        <ul id="taskList"></ul>
+        
+        <div class="empty-state" id="emptyState">
+            <i class="ph ph-list-checks"></i>
+            <p>All caught up!</p>
+            <small>Add some tasks above to get started.</small>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
