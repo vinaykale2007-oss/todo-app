@@ -26,12 +26,6 @@ This app helps users manage daily tasks with an interactive and visually appeali
 
 ---
 
-## 📸 Screenshots
-
-(Add your project screenshots here)
-
----
-
 ## 🚀 How to Run
 
 1. Download or clone the repository  
