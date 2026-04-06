@@ -1,12 +1,10 @@
 let tasks = [];
 
-// Load tasks from Local Storage and handle legacy array of strings
 function init() {
     const stored = localStorage.getItem("tasks");
     if (stored) {
         try {
             const parsed = JSON.parse(stored);
-            // Migrate legacy string array to object array backward compatibility
             tasks = parsed.map(t => {
                 if (typeof t === 'string') {
                     return { id: Date.now() + Math.random(), text: t, completed: false };
@@ -22,7 +20,6 @@ function init() {
 
 window.onload = init;
 
-// Allow pressing Enter to add task
 document.getElementById("taskInput").addEventListener("keypress", function(e) {
     if (e.key === "Enter") {
         addTask();
@@ -45,7 +42,7 @@ function addTask() {
     saveTasks();
 
     input.value = "";
-    input.focus(); // keep focus for continuous typing
+    input.focus(); 
     renderTasks();
 }
 
@@ -59,10 +56,8 @@ function toggleTask(id) {
 }
 
 function deleteTask(id, element) {
-    // Add exit animation
     element.classList.add("removing");
-    
-    // Wait for animation to finish before updating state and DOM
+   
     setTimeout(() => {
         tasks = tasks.filter(t => t.id !== id);
         saveTasks();
@@ -81,7 +76,6 @@ function renderTasks() {
     
     list.innerHTML = "";
 
-    // Update the counter
     let pendingCount = tasks.filter(t => !t.completed).length;
     taskCount.innerText = `${pendingCount} task${pendingCount !== 1 ? 's' : ''} pending`;
 
@@ -91,7 +85,6 @@ function renderTasks() {
         emptyState.classList.remove("show");
     }
 
-    // Render uncompleted first, then completed
     let sortedTasks = [...tasks].sort((a, b) => a.completed === b.completed ? 0 : a.completed ? 1 : -1);
 
     sortedTasks.forEach((task) => {
@@ -119,7 +112,7 @@ function renderTasks() {
         delBtn.innerHTML = '<i class="ph ph-trash"></i>';
         delBtn.setAttribute("aria-label", "Delete task");
         delBtn.onclick = (e) => {
-            e.stopPropagation(); // prevent toggling completion when deleting
+            e.stopPropagation(); 
             deleteTask(task.id, li);
         };
 
